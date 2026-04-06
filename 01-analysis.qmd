@@ -89,7 +89,7 @@ ORDER BY date;
 
 **SQL 查询方法**：使用 `substr()` 提取年份，配合 `GROUP BY` 进行聚合。
 
-```bash
+```sql
 SELECT
     code,
     substr(date, 1, 4) AS year,
@@ -115,7 +115,7 @@ ORDER BY code, year;
 
 **SQL 查询方法**：多条件筛选，使用 `DATE()` 函数计算上市年限。
 
-```bash
+```sql
 SELECT
     si.code,
     si.name,

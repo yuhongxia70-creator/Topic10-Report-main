@@ -1,0 +1,16 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Topic 10 作业分享报告"
+  author: "G2 - 吴思雨"
+  chapters:
+    - index.qmd
+    - 01-analysis.qmd
+    - 02-sqlite.qmd
+    - 03-ai-assistance.qmd
+
+format:
+  html:
+    highlight-style: none

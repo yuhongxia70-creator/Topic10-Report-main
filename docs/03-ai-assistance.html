@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; AI 协助过程 – Topic 10 作业分享报告</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02-sqlite.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e7a83a4f0c59da215cb2a34589e82e44.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-daabd5466c133e46abf9766f4c391b09.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-ai-assistance.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">AI 协助过程</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Topic 10 作业分享报告</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">数据获取进阶：API 调用与 SQLite 数据库管理</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">分析过程和主要结论</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-sqlite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">SQLite 技术介绍</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-ai-assistance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">AI 协助过程</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#ai-工具选择" id="toc-ai-工具选择" class="nav-link active" data-scroll-target="#ai-工具选择"><span class="header-section-number">4.1</span> AI 工具选择</a></li>
+  <li><a href="#ai-的主要用途" id="toc-ai-的主要用途" class="nav-link" data-scroll-target="#ai-的主要用途"><span class="header-section-number">4.2</span> AI 的主要用途</a>
+  <ul class="collapse">
+  <li><a href="#代码优化与重构" id="toc-代码优化与重构" class="nav-link" data-scroll-target="#代码优化与重构"><span class="header-section-number">4.2.1</span> 代码优化与重构</a></li>
+  <li><a href="#图表样式统一与美化" id="toc-图表样式统一与美化" class="nav-link" data-scroll-target="#图表样式统一与美化"><span class="header-section-number">4.2.2</span> 图表样式统一与美化</a></li>
+  <li><a href="#sql-查询编写与优化" id="toc-sql-查询编写与优化" class="nav-link" data-scroll-target="#sql-查询编写与优化"><span class="header-section-number">4.2.3</span> SQL 查询编写与优化</a></li>
+  <li><a href="#文档完善" id="toc-文档完善" class="nav-link" data-scroll-target="#文档完善"><span class="header-section-number">4.2.4</span> 文档完善</a></li>
+  </ul></li>
+  <li><a href="#典型的-ai-协作流程" id="toc-典型的-ai-协作流程" class="nav-link" data-scroll-target="#典型的-ai-协作流程"><span class="header-section-number">4.3</span> 典型的 AI 协作流程</a>
+  <ul class="collapse">
+  <li><a href="#问题-响应-迭代模式" id="toc-问题-响应-迭代模式" class="nav-link" data-scroll-target="#问题-响应-迭代模式"><span class="header-section-number">4.3.1</span> 问题-响应-迭代模式</a></li>
+  <li><a href="#示例图表优化的完整对话" id="toc-示例图表优化的完整对话" class="nav-link" data-scroll-target="#示例图表优化的完整对话"><span class="header-section-number">4.3.2</span> 示例：图表优化的完整对话</a></li>
+  </ul></li>
+  <li><a href="#ai-使用的注意事项" id="toc-ai-使用的注意事项" class="nav-link" data-scroll-target="#ai-使用的注意事项"><span class="header-section-number">4.4</span> AI 使用的注意事项</a>
+  <ul class="collapse">
+  <li><a href="#提示词要具体明确" id="toc-提示词要具体明确" class="nav-link" data-scroll-target="#提示词要具体明确"><span class="header-section-number">4.4.1</span> 提示词要具体明确</a></li>
+  <li><a href="#要审查和验证-ai-的输出" id="toc-要审查和验证-ai-的输出" class="nav-link" data-scroll-target="#要审查和验证-ai-的输出"><span class="header-section-number">4.4.2</span> 要审查和验证 AI 的输出</a></li>
+  <li><a href="#保持学习心态而不是直接复制" id="toc-保持学习心态而不是直接复制" class="nav-link" data-scroll-target="#保持学习心态而不是直接复制"><span class="header-section-number">4.4.3</span> 保持学习心态，而不是直接复制</a></li>
+  <li><a href="#知道-ai-的边界" id="toc-知道-ai-的边界" class="nav-link" data-scroll-target="#知道-ai-的边界"><span class="header-section-number">4.4.4</span> 知道 AI 的边界</a></li>
+  </ul></li>
+  <li><a href="#效率提升对比" id="toc-效率提升对比" class="nav-link" data-scroll-target="#效率提升对比"><span class="header-section-number">4.5</span> 效率提升对比</a></li>
+  <li><a href="#本章小结" id="toc-本章小结" class="nav-link" data-scroll-target="#本章小结"><span class="header-section-number">4.6</span> 本章小结</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">AI 协助过程</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="ai-工具选择" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="ai-工具选择"><span class="header-section-number">4.1</span> AI 工具选择</h2>
+<p>本项目在完成过程中使用了 <strong>Claude Code</strong> 作为主要的 AI 辅助开发工具。选择 Claude Code 的原因包括：</p>
+<ul>
+<li><strong>代码理解能力强</strong>：能够准确理解现有代码结构和逻辑</li>
+<li><strong>多文件协作</strong>：可以同时处理多个相关文件，保持一致性</li>
+<li><strong>Python 和数据科学专长</strong>：对 Pandas、Matplotlib、SQL 等数据科技术支持良好</li>
+<li><strong>交互式开发</strong>：支持边写代码边讨论，及时调整方向 啦啦啦 —</li>
+</ul>
+</section>
+<section id="ai-的主要用途" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="ai-的主要用途"><span class="header-section-number">4.2</span> AI 的主要用途</h2>
+<section id="代码优化与重构" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="代码优化与重构"><span class="header-section-number">4.2.1</span> 代码优化与重构</h3>
+<p><strong>场景 1：移除 tushare 依赖，改用 baostock</strong></p>
+<p>原始代码使用 tushare 获取 A 股数据，但 tushare 需要注册且有积分限制。我们希望改用免费的 baostock。</p>
+<p><strong>提示词示例</strong>： &gt; “请帮我移除 tushare 依赖，改用 baostock 获取 A 股数据。需要获取沪深 300 指数和 10 只代表性股票的日线数据，包括开盘价、最高价、最低价、收盘价、成交量、复权收盘价。”</p>
+<p><strong>AI 提供的帮助</strong>： - 给出 baostock 的安装和使用方法 - 提供完整的数据获取代码 - 处理数据格式转换，确保与原结构一致 - 添加错误处理和重试机制</p>
+<hr>
+</section>
+<section id="图表样式统一与美化" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="图表样式统一与美化"><span class="header-section-number">4.2.2</span> 图表样式统一与美化</h3>
+<p><strong>场景 2：统一多个 Notebook 的图表风格</strong></p>
+<p>项目中有多个 Notebook，每个都有独立的可视化代码，图表风格不统一。</p>
+<p><strong>提示词示例</strong>： &gt; “请帮我统一 01_api_download.ipynb 和 03_sql_analysis.ipynb 中的图表风格。要求： &gt; 1. 使用 seaborn 的 whitegrid 风格 &gt; 2. 字体大小统一设置 &gt; 3. 图表尺寸保持一致 &gt; 4. 颜色方案使用专业的配色 &gt; 5. 确保中文能正确显示，如果有问题就用英文标签”</p>
+<p><strong>AI 提供的帮助</strong>： - 创建统一的样式配置代码块 - 为每个图表应用一致的参数 - 处理中文字体回退机制 - 优化图例位置和标签可读性 - 添加网格线和边框样式调整</p>
+<p><strong>效果对比</strong>：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>优化前</th>
+<th>优化后</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>各图表风格不一</td>
+<td>统一专业的视觉风格</td>
+</tr>
+<tr class="even">
+<td>字体大小混乱</td>
+<td>层级清晰的字体</td>
+</tr>
+<tr class="odd">
+<td>配色随意</td>
+<td>协调的配色方案</td>
+</tr>
+<tr class="even">
+<td>中文可能乱码</td>
+<td>稳定的显示效果</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="sql-查询编写与优化" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="sql-查询编写与优化"><span class="header-section-number">4.2.3</span> SQL 查询编写与优化</h3>
+<p><strong>场景 3：实现复杂的分析查询</strong></p>
+<p>需要完成多个 SQL 查询任务，包括必做的 3 个查询和自选的 2 个查询。</p>
+<p><strong>提示词示例</strong>： &gt; “请帮我实现 03_sql_analysis.ipynb 中的所有查询： &gt; 1. 必做查询 1：计算收益率曲线利差（10Y-2Y），需要用 CASE WHEN 将长表转宽表 &gt; 2. 必做查询 2：计算每只股票的年度平均收盘价和总成交量 &gt; 3. 必做查询 3：筛选银行行业且上市超过 10 年的股票 &gt; 4. 自选查询 1：分析菲利普斯曲线（CPI 与失业率关系） &gt; 5. 自选查询 2：研究股票波动率与成交量的关系 &gt; &gt; 每个查询后都需要有对应的可视化分析和结论解释。”</p>
+<p><strong>AI 提供的帮助</strong>： - 编写正确的 SQL 查询语句 - 解释每个查询的逻辑和技巧 - 提供可视化代码（Matplotlib/Seaborn） - 帮助解读分析结果，形成有意义的结论 - 补充完整分析流程示例</p>
+<p><strong>SQL 查询技巧学习</strong>：</p>
+<p>在 AI 的帮助下，我们学到了以下实用技巧：</p>
+<ol type="1">
+<li><strong>长表转宽表</strong>：使用 <code>CASE WHEN</code> + <code>GROUP BY</code></li>
+<li><strong>日期处理</strong>：使用 <code>substr()</code> 提取年份</li>
+<li><strong>条件筛选</strong>：多条件组合使用 <code>AND</code>/<code>OR</code></li>
+<li><strong>表连接</strong>：正确使用 <code>JOIN</code> 关联多个表</li>
+<li><strong>索引利用</strong>：AI 提醒我们为常用字段创建索引</li>
+</ol>
+<hr>
+</section>
+<section id="文档完善" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="文档完善"><span class="header-section-number">4.2.4</span> 文档完善</h3>
+<p><strong>场景 4：编写项目 README</strong></p>
+<p>项目完成后需要一份清晰的 README 文档，方便他人理解和使用。</p>
+<p><strong>提示词示例</strong>： &gt; “请帮我为这个项目写一份完整的 README.md，包括： &gt; 1. 项目概述 &gt; 2. API 申请说明（FRED 和 baostock） &gt; 3. 项目结构说明 &gt; 4. 配置说明（环境变量和配置文件两种方式） &gt; 5. 数据库结构（每个表的字段说明） &gt; 6. 使用说明（一步步教用户如何运行） &gt; 7. 数据库自动更新说明（包括 Windows 任务计划和 Linux cron） &gt; 8. 注意事项 &gt; 9. AI 工具使用声明”</p>
+<p><strong>AI 提供的帮助</strong>： - 结构化的文档组织 - 清晰的步骤说明 - 代码示例和配置模板 - 跨平台的操作指南 - 专业的术语解释</p>
+<hr>
+</section>
+</section>
+<section id="典型的-ai-协作流程" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="典型的-ai-协作流程"><span class="header-section-number">4.3</span> 典型的 AI 协作流程</h2>
+<section id="问题-响应-迭代模式" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="问题-响应-迭代模式"><span class="header-section-number">4.3.1</span> 问题-响应-迭代模式</h3>
+<p>我们与 AI 的协作通常遵循以下流程：</p>
+<pre><code>1. 明确任务
+   ↓
+2. 给出详细提示词
+   ↓
+3. AI 生成初步方案
+   ↓
+4. 审查结果，提出修改意见
+   ↓
+5. AI 根据反馈调整
+   ↓
+6. （如有需要，重复 4-5）
+   ↓
+7. 最终确认</code></pre>
+</section>
+<section id="示例图表优化的完整对话" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="示例图表优化的完整对话"><span class="header-section-number">4.3.2</span> 示例：图表优化的完整对话</h3>
+<p><strong>用户</strong>： &gt; “这个图的配色不太好看，帮我改得更专业一点。”</p>
+<p><strong>AI</strong>： &gt; “我来帮你优化图表配色。可以考虑使用 seaborn 的配色方案，比如 ‘viridis’、‘coolwarm’ 或 ‘Set2’。另外，我会调整一下线条粗细和标记样式，让图表更清晰。” &gt; &gt; [提供修改后的代码]</p>
+<p><strong>用户</strong>： &gt; “配色不错，但 y 轴标签被截断了，能不能调整一下左边距？另外图例放到图的下方吧。”</p>
+<p><strong>AI</strong>： &gt; “好的，我来调整： &gt; 1. 使用 <code>plt.subplots_adjust(left=0.15)</code> 增加左边距 &gt; 2. 将图例位置改为 <code>loc='upper center', bbox_to_anchor=(0.5, -0.12), ncol=2</code> 放到图下方 &gt; &gt; [提供更新后的代码]”</p>
+<p><strong>用户</strong>： &gt; “完美，就这样！”</p>
+<hr>
+</section>
+</section>
+<section id="ai-使用的注意事项" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="ai-使用的注意事项"><span class="header-section-number">4.4</span> AI 使用的注意事项</h2>
+<p>在使用 AI 协助完成作业的过程中，我们也总结了一些经验：</p>
+<section id="提示词要具体明确" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="提示词要具体明确"><span class="header-section-number">4.4.1</span> 提示词要具体明确</h3>
+<p><strong>不太好的提示词</strong>： &gt; “帮我写个分析代码”</p>
+<p><strong>好的提示词</strong>： &gt; “帮我写一个 Python 函数，输入是 SQLite 数据库连接，输出是一个 DataFrame，包含每只股票的年化收益率和波动率。使用 2020-2024 年的数据，收益率用复权收盘价计算，波动率用日收益率的标准差乘以 sqrt(252) 年化。”</p>
+<hr>
+</section>
+<section id="要审查和验证-ai-的输出" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="要审查和验证-ai-的输出"><span class="header-section-number">4.4.2</span> 要审查和验证 AI 的输出</h3>
+<p>AI 有时会： - 生成看上去正确但实际有逻辑错误的代码 - 使用过时的 API 或已废弃的函数 - 在计算细节上出错（如忘记年化、除权处理等）</p>
+<p><strong>我们的做法</strong>： - 每段代码都仔细阅读，理解逻辑 - 小范围测试，验证结果合理性 - 交叉核对（比如用两种方法计算同一指标） - 对关键计算，手动抽查几个样本</p>
+<hr>
+</section>
+<section id="保持学习心态而不是直接复制" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="保持学习心态而不是直接复制"><span class="header-section-number">4.4.3</span> 保持学习心态，而不是直接复制</h3>
+<p>AI 是学习工具，不是答案机器。我们的目标是：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>❌ 不提倡</th>
+<th>✅ 提倡</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>直接复制粘贴 AI 写的代码</td>
+<td>理解 AI 代码的思路和技巧</td>
+</tr>
+<tr class="even">
+<td>只问结果，不问过程</td>
+<td>让 AI 解释”为什么这么写”</td>
+</tr>
+<tr class="odd">
+<td>完全依赖 AI 解决问题</td>
+<td>用 AI 辅助自己解决问题</td>
+</tr>
+<tr class="even">
+<td>不懂装懂</td>
+<td>遇到不懂的就问 AI 解释</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="知道-ai-的边界" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="知道-ai-的边界"><span class="header-section-number">4.4.4</span> 知道 AI 的边界</h3>
+<p>AI 很强大，但不是万能的：</p>
+<ul>
+<li><strong>AI 不擅长</strong>：需要真实 API Key 的测试、特定环境配置问题、深度的业务逻辑判断</li>
+<li><strong>AI 可能出错</strong>：复杂的数学计算、对最新库的了解、某些边缘情况的处理</li>
+<li><strong>AI 没有上下文</strong>：它不知道你的具体作业要求、评分标准、团队约定等</li>
+</ul>
+<p><strong>应对策略</strong>： - 涉及真实 API 调用时，自己测试 - 环境配置问题，多查官方文档 - 重要决策，自己结合作业要求判断</p>
+<hr>
+</section>
+</section>
+<section id="效率提升对比" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="效率提升对比"><span class="header-section-number">4.5</span> 效率提升对比</h2>
+<p>使用 AI 前后的工作量对比（估算）：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>任务</th>
+<th>不使用 AI</th>
+<th>使用 AI</th>
+<th>节省时间</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>基础框架搭建</td>
+<td>2 小时</td>
+<td>30 分钟</td>
+<td>~75%</td>
+</tr>
+<tr class="even">
+<td>API 对接</td>
+<td>3 小时</td>
+<td>1 小时</td>
+<td>~67%</td>
+</tr>
+<tr class="odd">
+<td>SQL 查询编写</td>
+<td>4 小时</td>
+<td>1.5 小时</td>
+<td>~62%</td>
+</tr>
+<tr class="even">
+<td>可视化美化</td>
+<td>3 小时</td>
+<td>45 分钟</td>
+<td>~75%</td>
+</tr>
+<tr class="odd">
+<td>文档编写</td>
+<td>2 小时</td>
+<td>45 分钟</td>
+<td>~62%</td>
+</tr>
+<tr class="even">
+<td><strong>总计</strong></td>
+<td><strong>14 小时</strong></td>
+<td><strong>4.5 小时</strong></td>
+<td><strong>~68%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>更重要的是</strong>：AI 帮助我们把精力从”怎么写代码”转移到”怎么分析问题”上，提升了分析的深度和质量。</p>
+<hr>
+</section>
+<section id="本章小结" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="本章小结"><span class="header-section-number">4.6</span> 本章小结</h2>
+<p>AI 工具在本项目中的价值总结：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>方面</th>
+<th>具体体现</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>效率提升</strong></td>
+<td>节省约 68% 的开发时间</td>
+</tr>
+<tr class="even">
+<td><strong>代码质量</strong></td>
+<td>统一的风格、更好的注释、更健壮的错误处理</td>
+</tr>
+<tr class="odd">
+<td><strong>学习效果</strong></td>
+<td>通过 AI 的解释学到了很多实用技巧</td>
+</tr>
+<tr class="even">
+<td><strong>分析深度</strong></td>
+<td>有更多精力专注于分析本身，而不是代码实现</td>
+</tr>
+<tr class="odd">
+<td><strong>文档完善</strong></td>
+<td>AI 帮助生成了清晰的 README 和注释</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心经验</strong>：AI 是强大的助手，但最终的判断、验证和决策仍需我们自己完成。合理使用 AI，能让我们学得更快、做得更好。</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-sqlite.html" class="pagination-link" aria-label="SQLite 技术介绍">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">SQLite 技术介绍</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

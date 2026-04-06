@@ -1,0 +1,252 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Topic 10 作业分享报告",
+    "section": "",
+    "text": "1 数据获取进阶：API 调用与 SQLite 数据库管理",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>数据获取进阶：API 调用与 SQLite 数据库管理</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#topic-10-作业分享报告",
+    "href": "index.html#topic-10-作业分享报告",
+    "title": "Topic 10 作业分享报告",
+    "section": "1.1 Topic 10 作业分享报告",
+    "text": "1.1 Topic 10 作业分享报告\n汇报人： G2 - 夏雨虹 汇报时间： 15 分钟",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>数据获取进阶：API 调用与 SQLite 数据库管理</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#分享内容概览",
+    "href": "index.html#分享内容概览",
+    "title": "Topic 10 作业分享报告",
+    "section": "1.2 分享内容概览",
+    "text": "1.2 分享内容概览\n本次分享将分为三个部分：\n\n分析过程和主要结论 介绍本项目的数据来源、分析方法和主要发现\nSQLite 技术介绍 讲解项目中使用的 SQLite 数据库技术，包括表结构设计、索引优化、SQL 查询技巧等\nAI 协助过程 分享完成作业过程中如何使用 AI 工具提升效率",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>数据获取进阶：API 调用与 SQLite 数据库管理</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#项目概述",
+    "href": "index.html#项目概述",
+    "title": "Topic 10 作业分享报告",
+    "section": "1.3 项目概述",
+    "text": "1.3 项目概述\n本项目展示了如何通过 API 获取金融数据并使用 SQLite 进行本地存储与分析。项目包含：\n\nFRED 宏观经济数据（CPI、失业率、联邦基金利率、国债收益率等）\nA 股行情数据（沪深 300 指数及 10 只代表性股票）\n完整的 SQL 查询分析流程\n自动化数据库更新机制\n\n\n点击左侧导航栏或下方按钮开始阅读各章节内容。",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>数据获取进阶：API 调用与 SQLite 数据库管理</span>"
+    ]
+  },
+  {
+    "objectID": "01-analysis.html",
+    "href": "01-analysis.html",
+    "title": "代码块阴影示例",
+    "section": "",
+    "text": "2.1 项目整体流程\n本项目的分析工作分为三个主要阶段：",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>分析过程和主要结论</span>"
+    ]
+  },
+  {
+    "objectID": "01-analysis.html#项目整体流程",
+    "href": "01-analysis.html#项目整体流程",
+    "title": "代码块阴影示例",
+    "section": "",
+    "text": "数据获取阶段：通过 API 获取原始数据\n数据库建立阶段：设计并创建 SQLite 数据库\n分析与可视化阶段：使用 SQL 查询进行数据分析",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>分析过程和主要结论</span>"
+    ]
+  },
+  {
+    "objectID": "01-analysis.html#数据来源",
+    "href": "01-analysis.html#数据来源",
+    "title": "代码块阴影示例",
+    "section": "2.2 数据来源",
+    "text": "2.2 数据来源\n\n2.2.1 FRED 宏观经济数据\n从 St. Louis Fed 的 FRED (Federal Reserve Economic Data) API 获取以下数据：\n\n\n\n序列 ID\n指标名称\n时间范围\n\n\n\n\nCPIAUCSL\n消费者价格指数\n2000-01-01 至 2024-12-31\n\n\nUNRATE\n失业率\n2000-01-01 至 2024-12-31\n\n\nFEDFUNDS\n联邦基金利率\n2000-01-01 至 2024-12-31\n\n\nGS10\n10 年期国债收益率\n2000-01-01 至 2024-12-31\n\n\nGS2\n2 年期国债收益率\n2000-01-01 至 2024-12-31\n\n\nDEXCHUS\n美元兑人民币汇率\n2000-01-01 至 2024-12-31\n\n\n\n\n\n\n宏观数据概览\n\n\n\n\n2.2.2 A 股市场数据\n使用 baostock API 获取以下数据：\n\n沪深 300 指数（000300.SH）\n10 只代表性股票：包括招商银行、平安银行、贵州茅台、恒瑞医药等不同行业的龙头企业\n\n数据范围：2020-01-01 至 2024-12-31\n\n\n\n沪深 300 概览",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>分析过程和主要结论</span>"
+    ]
+  },
+  {
+    "objectID": "01-analysis.html#数据库概览",
+    "href": "01-analysis.html#数据库概览",
+    "title": "代码块阴影示例",
+    "section": "2.3 数据库概览",
+    "text": "2.3 数据库概览\n创建的 fin_data.db 数据库包含三个核心表：\n\n\n\n表名\n记录数\n说明\n\n\n\n\nmacro_data\n1,887\n宏观经济数据\n\n\nstock_price\n41,194\n股票行情数据\n\n\nstock_info\n11\n股票基本信息",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>分析过程和主要结论</span>"
+    ]
+  },
+  {
+    "objectID": "01-analysis.html#主要分析内容与结论",
+    "href": "01-analysis.html#主要分析内容与结论",
+    "title": "代码块阴影示例",
+    "section": "2.4 主要分析内容与结论",
+    "text": "2.4 主要分析内容与结论\n\n2.4.1 收益率曲线利差分析\n分析目标：计算 10 年期与 2 年期国债收益率的利差（10Y-2Y），这是预测经济衰退的重要指标。\nSQL 查询方法：使用 CASE WHEN 语句将长表转为宽表，然后计算利差。\n\nSELECT\n    date,\n    MAX(CASE WHEN series_id = 'GS10' THEN value END) AS gs10,\n    MAX(CASE WHEN series_id = 'GS2' THEN value END) AS gs2,\n    MAX(CASE WHEN series_id = 'GS10' THEN value END) -\n    MAX(CASE WHEN series_id = 'GS2' THEN value END) AS yield_spread\nFROM macro_data\nWHERE series_id IN ('GS10', 'GS2')\nGROUP BY date\nORDER BY date;\n\n\n\n收益率曲线利差\n\n\n主要发现： - 收益率曲线利差在经济危机期间（如 2008 年、2020 年）出现剧烈波动 - 利差收窄甚至倒挂往往预示着经济下行压力增大\n\n\n\n2.4.2 股票年度统计分析\n分析目标：计算每只股票的年度平均收盘价和总成交量，观察长期趋势。\nSQL 查询方法：使用 substr() 提取年份，配合 GROUP BY 进行聚合。\nSELECT\n    code,\n    substr(date, 1, 4) AS year,\n    AVG(close) AS avg_close,\n    SUM(volume) AS total_volume\nFROM stock_price\nGROUP BY code, year\nORDER BY code, year;\n\n\n\n股票年度统计\n\n\n主要发现： - 不同股票的年度表现差异显著 - 成交量与股价波动存在一定相关性 - 银行股表现相对稳健，消费股波动较大\n\n\n\n2.4.3 银行股筛选分析\n分析目标：筛选出银行行业且上市超过 10 年的股票。\nSQL 查询方法：多条件筛选，使用 DATE() 函数计算上市年限。\nSELECT\n    si.code,\n    si.name,\n    si.industry,\n    si.list_date,\n    DATE('now') - DATE(si.list_date) AS years_listed\nFROM stock_info si\nWHERE\n    si.industry = '银行'\n    AND DATE('now') - DATE(si.list_date) &gt;= 10\nORDER BY si.list_date;\n\n\n\n银行股筛选结果\n\n\n筛选结果： 1. 浦发银行 2. 招商银行 3. 平安银行\n\n\n\n2.4.4 菲利普斯曲线验证\n分析目标：探索 CPI（通胀率）与失业率之间的关系，验证菲利普斯曲线理论。\nSQL 查询方法：将 CPI 和失业率数据进行联结，然后分析相关性。\n\n\n\n菲利普斯曲线\n\n\n主要发现： - 短期来看，通胀与失业率确实存在一定的替代关系 - 但长期来看，这种关系并不稳定，受多种因素影响\n\n\n\n2.4.5 股票波动率与成交量关系\n分析目标：分析股票价格波动率与成交量之间的关系。\nSQL 查询方法：计算每日价格振幅（(high-low)/close）作为波动率指标，然后与成交量对比。\n\n\n\n波动率与成交量关系\n\n\n主要发现： - 高成交量往往伴随着高波动率 - 在市场剧烈波动时期，成交量显著放大\n\n\n\n2.4.6 美联储政策对人民币汇率的影响（完整分析流程）\n分析目标：研究美联储加息/降息周期对美元兑人民币汇率的影响。\n分析步骤： 1. 识别美联储的加息和降息周期 2. 计算不同周期内的汇率月度变动 3. 对比分析差异\n\n\n\n美联储政策与汇率分析\n\n\n主要结论：\n\n\n\n政策周期\n平均月度汇率变动\n\n\n\n\n加息期间\n+0.0779%\n\n\n降息期间\n-0.1517%\n\n\n\n解读： - 美联储加息期间，美元趋于走强，人民币相对贬值（汇率上升） - 美联储降息期间，美元趋于走弱，人民币相对升值（汇率下降） - 这一结果符合利率平价理论的预期",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>分析过程和主要结论</span>"
+    ]
+  },
+  {
+    "objectID": "01-analysis.html#本章小结",
+    "href": "01-analysis.html#本章小结",
+    "title": "代码块阴影示例",
+    "section": "2.5 本章小结",
+    "text": "2.5 本章小结\n本项目通过 API 获取了丰富的金融市场数据，建立了结构化的 SQLite 数据库，并完成了多个维度的分析。主要收获包括：\n\n数据获取能力：掌握了使用 API 获取经济金融数据的方法\n数据库管理能力：学会了设计和管理关系型数据库\n分析能力：能够运用 SQL 进行复杂的数据查询和分析\n可视化能力：通过图表直观展示分析结果\n\n下一章将详细介绍本项目中使用的 SQLite 技术。",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>分析过程和主要结论</span>"
+    ]
+  },
+  {
+    "objectID": "02-sqlite.html",
+    "href": "02-sqlite.html",
+    "title": "3  SQLite 技术介绍",
+    "section": "",
+    "text": "3.1 SQLite 简介\nSQLite 是一个轻量级的嵌入式关系型数据库管理系统，具有以下特点：\n对于金融数据分析这样的应用场景，SQLite 是一个非常理想的选择。",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>SQLite 技术介绍</span>"
+    ]
+  },
+  {
+    "objectID": "02-sqlite.html#sqlite-简介",
+    "href": "02-sqlite.html#sqlite-简介",
+    "title": "3  SQLite 技术介绍",
+    "section": "",
+    "text": "零配置：无需服务器，无需安装配置\n单文件存储：整个数据库存储在一个文件中\n跨平台：支持所有主流操作系统\n事务支持：支持 ACID 特性\n开源免费：完全免费，可自由使用",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>SQLite 技术介绍</span>"
+    ]
+  },
+  {
+    "objectID": "02-sqlite.html#数据库表结构设计",
+    "href": "02-sqlite.html#数据库表结构设计",
+    "title": "3  SQLite 技术介绍",
+    "section": "3.2 数据库表结构设计",
+    "text": "3.2 数据库表结构设计\n本项目设计了三个核心数据表，每个表都有明确的主键和字段设计。\n\n3.2.1 macro_data（宏观数据表）\nCREATE TABLE macro_data (\n    date TEXT,\n    series_id TEXT,\n    value REAL,\n    PRIMARY KEY (date, series_id)\n);\n设计要点： - 使用复合主键 (date, series_id) 确保同一指标在同一日期只有一条记录 - date 存储为 TEXT 类型，格式为 ‘YYYY-MM-DD’ - series_id 用于标识不同的宏观经济指标 - value 使用 REAL 类型存储数值\n\n\n3.2.2 stock_price（股票行情表）\nCREATE TABLE stock_price (\n    code TEXT,\n    date TEXT,\n    open REAL,\n    high REAL,\n    low REAL,\n    close REAL,\n    volume REAL,\n    adj_close REAL,\n    PRIMARY KEY (code, date)\n);\n设计要点： - 复合主键 (code, date) 确保每只股票每天只有一条行情记录 - 包含完整的 OHLCV（开盘价、最高价、最低价、收盘价、成交量）数据 - adj_close 字段存储复权收盘价，用于计算收益率\n\n\n3.2.3 stock_info（股票基本信息表）\nCREATE TABLE stock_info (\n    code TEXT PRIMARY KEY,\n    name TEXT,\n    industry TEXT,\n    list_date TEXT,\n    market_cap REAL\n);\n设计要点： - code 作为主键，每只股票一条记录 - 包含股票名称、行业分类、上市日期、总市值等基本信息 - 便于按行业筛选或分析股票基本属性",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>SQLite 技术介绍</span>"
+    ]
+  },
+  {
+    "objectID": "02-sqlite.html#索引优化",
+    "href": "02-sqlite.html#索引优化",
+    "title": "3  SQLite 技术介绍",
+    "section": "3.3 索引优化",
+    "text": "3.3 索引优化\n为了提高查询效率，我们为常用查询字段创建了索引。\n\n3.3.1 创建的索引\n-- 宏观数据表索引\nCREATE INDEX idx_macro_date ON macro_data(date);\nCREATE INDEX idx_macro_series ON macro_data(series_id);\n\n-- 股票行情表索引\nCREATE INDEX idx_stock_price_code ON stock_price(code);\nCREATE INDEX idx_stock_price_date ON stock_price(date);\n\n-- 股票信息表索引\nCREATE INDEX idx_stock_info_industry ON stock_info(industry);\n\n\n3.3.2 索引的作用\n\n\n\n索引名称\n适用查询场景\n性能提升\n\n\n\n\nidx_macro_date\n按日期范围查询宏观数据\n避免全表扫描\n\n\nidx_macro_series\n按指标类型筛选\n加快 WHERE 条件过滤\n\n\nidx_stock_price_code\n查询单只股票的行情\n大幅提高 GROUP BY 效率\n\n\nidx_stock_price_date\n按日期范围查询行情\n加速时间序列分析\n\n\nidx_stock_info_industry\n按行业筛选股票\n快速分类聚合",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>SQLite 技术介绍</span>"
+    ]
+  },
+  {
+    "objectID": "02-sqlite.html#sql-查询技术",
+    "href": "02-sqlite.html#sql-查询技术",
+    "title": "3  SQLite 技术介绍",
+    "section": "3.4 SQL 查询技术",
+    "text": "3.4 SQL 查询技术\n本项目使用了多种 SQL 查询技术来实现复杂的数据分析。\n\n3.4.1 长表转宽表（CASE WHEN）\n应用场景：将同一日期的多个指标从行转为列\nSELECT\n    date,\n    MAX(CASE WHEN series_id = 'CPIAUCSL' THEN value END) AS cpi,\n    MAX(CASE WHEN series_id = 'UNRATE' THEN value END) AS unemployment,\n    MAX(CASE WHEN series_id = 'FEDFUNDS' THEN value END) AS fed_rate\nFROM macro_data\nWHERE series_id IN ('CPIAUCSL', 'UNRATE', 'FEDFUNDS')\nGROUP BY date\nORDER BY date;\n原理说明： - CASE WHEN 为每个指标创建一个条件列 - MAX() 聚合函数取出非 NULL 值 - GROUP BY date 确保同一日期的数据合并为一行\n\n\n3.4.2 字符串函数（substr）\n应用场景：从日期字符串中提取年份\nSELECT\n    code,\n    substr(date, 1, 4) AS year,\n    AVG(close) AS avg_close\nFROM stock_price\nGROUP BY code, substr(date, 1, 4);\n语法说明： - substr(date, 1, 4) 从第 1 个字符开始，取 4 个字符 - 结果即为年份（如 “2024”）\n\n\n3.4.3 表连接（JOIN）\n应用场景：结合股票行情和基本信息进行分析\nSELECT\n    sp.date,\n    sp.code,\n    si.name,\n    si.industry,\n    sp.close\nFROM stock_price sp\nJOIN stock_info si ON sp.code = si.code\nWHERE si.industry = '银行';\n注意事项： - 使用表别名（sp, si）简化查询 - 通过 ON 子句指定连接条件 - 可以在 WHERE 中对连接后的结果进行筛选\n\n\n3.4.4 聚合与分组（GROUP BY）\n应用场景：计算年度统计指标\nSELECT\n    code,\n    substr(date, 1, 4) AS year,\n    COUNT(*) AS trading_days,\n    AVG(close) AS avg_close,\n    MAX(high) AS year_high,\n    MIN(low) AS year_low,\n    SUM(volume) AS total_volume\nFROM stock_price\nGROUP BY code, substr(date, 1, 4)\nORDER BY code, year;\n常用聚合函数： - COUNT() - 计数 - AVG() - 平均值 - MAX() - 最大值 - MIN() - 最小值 - SUM() - 求和",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>SQLite 技术介绍</span>"
+    ]
+  },
+  {
+    "objectID": "02-sqlite.html#python-与-sqlite-交互",
+    "href": "02-sqlite.html#python-与-sqlite-交互",
+    "title": "3  SQLite 技术介绍",
+    "section": "3.5 Python 与 SQLite 交互",
+    "text": "3.5 Python 与 SQLite 交互\n\n3.5.1 数据库连接\nimport sqlite3\nimport pandas as pd\n\n# 连接数据库（不存在则创建）\nconn = sqlite3.connect('fin_data.db')\n\n\n3.5.2 写入数据\n使用 Pandas 的 to_sql() 方法可以方便地将 DataFrame 写入数据库：\n# 将 DataFrame 写入数据库\ndf.to_sql(\n    name='macro_data',        # 表名\n    con=conn,                  # 数据库连接\n    if_exists='replace',       # 已存在则替换\n    index=False                # 不写入索引\n)\n\n\n3.5.3 读取查询结果\n使用 Pandas 的 read_sql_query() 执行 SQL 查询并返回 DataFrame：\n# 执行 SQL 查询\nquery = \"\"\"\n    SELECT date, series_id, value\n    FROM macro_data\n    WHERE series_id = 'CPIAUCSL'\n    ORDER BY date\n\"\"\"\ndf = pd.read_sql_query(query, conn)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>SQLite 技术介绍</span>"
+    ]
+  },
+  {
+    "objectID": "02-sqlite.html#增量更新机制",
+    "href": "02-sqlite.html#增量更新机制",
+    "title": "3  SQLite 技术介绍",
+    "section": "3.6 增量更新机制",
+    "text": "3.6 增量更新机制\n项目实现了智能的增量更新功能，避免重复下载已有数据。\n\n3.6.1 查询最新日期\nSELECT MAX(date) AS last_date FROM macro_data WHERE series_id = ?;\n\n\n3.6.2 增量插入新数据\n# 获取数据库中已有数据的最新日期\nlast_date = get_last_date(conn, series_id)\n\n# 只下载该日期之后的新数据\nnew_data = fetch_data_from_api(start_date=last_date)\n\n# 追加到数据库\nnew_data.to_sql('macro_data', conn, if_exists='append', index=False)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>SQLite 技术介绍</span>"
+    ]
+  },
+  {
+    "objectID": "02-sqlite.html#本章小结",
+    "href": "02-sqlite.html#本章小结",
+    "title": "3  SQLite 技术介绍",
+    "section": "3.7 本章小结",
+    "text": "3.7 本章小结\n本项目中使用的 SQLite 技术要点总结：\n\n\n\n\n\n\n\n技术类别\n具体内容\n\n\n\n\n表结构设计\n复合主键、合理的数据类型选择\n\n\n性能优化\n为常用查询字段创建索引\n\n\n查询技巧\nCASE WHEN 转置、substr 字符串处理、JOIN 表连接、GROUP BY 聚合\n\n\nPython 集成\nsqlite3 连接、Pandas 的 to_sql/read_sql_query\n\n\n工程化\n增量更新机制\n\n\n\n这些技术组合使得项目既高效又易于维护。下一章将介绍完成作业过程中 AI 工具的使用。",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>SQLite 技术介绍</span>"
+    ]
+  },
+  {
+    "objectID": "03-ai-assistance.html",
+    "href": "03-ai-assistance.html",
+    "title": "4  AI 协助过程",
+    "section": "",
+    "text": "4.1 AI 工具选择\n本项目在完成过程中使用了 Claude Code 作为主要的 AI 辅助开发工具。选择 Claude Code 的原因包括：",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>AI 协助过程</span>"
+    ]
+  },
+  {
+    "objectID": "03-ai-assistance.html#ai-工具选择",
+    "href": "03-ai-assistance.html#ai-工具选择",
+    "title": "4  AI 协助过程",
+    "section": "",
+    "text": "代码理解能力强：能够准确理解现有代码结构和逻辑\n多文件协作：可以同时处理多个相关文件，保持一致性\nPython 和数据科学专长：对 Pandas、Matplotlib、SQL 等数据科技术支持良好\n交互式开发：支持边写代码边讨论，及时调整方向 啦啦啦 —",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>AI 协助过程</span>"
+    ]
+  },
+  {
+    "objectID": "03-ai-assistance.html#ai-的主要用途",
+    "href": "03-ai-assistance.html#ai-的主要用途",
+    "title": "4  AI 协助过程",
+    "section": "4.2 AI 的主要用途",
+    "text": "4.2 AI 的主要用途\n\n4.2.1 代码优化与重构\n场景 1：移除 tushare 依赖，改用 baostock\n原始代码使用 tushare 获取 A 股数据，但 tushare 需要注册且有积分限制。我们希望改用免费的 baostock。\n提示词示例： &gt; “请帮我移除 tushare 依赖，改用 baostock 获取 A 股数据。需要获取沪深 300 指数和 10 只代表性股票的日线数据，包括开盘价、最高价、最低价、收盘价、成交量、复权收盘价。”\nAI 提供的帮助： - 给出 baostock 的安装和使用方法 - 提供完整的数据获取代码 - 处理数据格式转换，确保与原结构一致 - 添加错误处理和重试机制\n\n\n\n4.2.2 图表样式统一与美化\n场景 2：统一多个 Notebook 的图表风格\n项目中有多个 Notebook，每个都有独立的可视化代码，图表风格不统一。\n提示词示例： &gt; “请帮我统一 01_api_download.ipynb 和 03_sql_analysis.ipynb 中的图表风格。要求： &gt; 1. 使用 seaborn 的 whitegrid 风格 &gt; 2. 字体大小统一设置 &gt; 3. 图表尺寸保持一致 &gt; 4. 颜色方案使用专业的配色 &gt; 5. 确保中文能正确显示，如果有问题就用英文标签”\nAI 提供的帮助： - 创建统一的样式配置代码块 - 为每个图表应用一致的参数 - 处理中文字体回退机制 - 优化图例位置和标签可读性 - 添加网格线和边框样式调整\n效果对比：\n\n\n\n优化前\n优化后\n\n\n\n\n各图表风格不一\n统一专业的视觉风格\n\n\n字体大小混乱\n层级清晰的字体\n\n\n配色随意\n协调的配色方案\n\n\n中文可能乱码\n稳定的显示效果\n\n\n\n\n\n\n4.2.3 SQL 查询编写与优化\n场景 3：实现复杂的分析查询\n需要完成多个 SQL 查询任务，包括必做的 3 个查询和自选的 2 个查询。\n提示词示例： &gt; “请帮我实现 03_sql_analysis.ipynb 中的所有查询： &gt; 1. 必做查询 1：计算收益率曲线利差（10Y-2Y），需要用 CASE WHEN 将长表转宽表 &gt; 2. 必做查询 2：计算每只股票的年度平均收盘价和总成交量 &gt; 3. 必做查询 3：筛选银行行业且上市超过 10 年的股票 &gt; 4. 自选查询 1：分析菲利普斯曲线（CPI 与失业率关系） &gt; 5. 自选查询 2：研究股票波动率与成交量的关系 &gt; &gt; 每个查询后都需要有对应的可视化分析和结论解释。”\nAI 提供的帮助： - 编写正确的 SQL 查询语句 - 解释每个查询的逻辑和技巧 - 提供可视化代码（Matplotlib/Seaborn） - 帮助解读分析结果，形成有意义的结论 - 补充完整分析流程示例\nSQL 查询技巧学习：\n在 AI 的帮助下，我们学到了以下实用技巧：\n\n长表转宽表：使用 CASE WHEN + GROUP BY\n日期处理：使用 substr() 提取年份\n条件筛选：多条件组合使用 AND/OR\n表连接：正确使用 JOIN 关联多个表\n索引利用：AI 提醒我们为常用字段创建索引\n\n\n\n\n4.2.4 文档完善\n场景 4：编写项目 README\n项目完成后需要一份清晰的 README 文档，方便他人理解和使用。\n提示词示例： &gt; “请帮我为这个项目写一份完整的 README.md，包括： &gt; 1. 项目概述 &gt; 2. API 申请说明（FRED 和 baostock） &gt; 3. 项目结构说明 &gt; 4. 配置说明（环境变量和配置文件两种方式） &gt; 5. 数据库结构（每个表的字段说明） &gt; 6. 使用说明（一步步教用户如何运行） &gt; 7. 数据库自动更新说明（包括 Windows 任务计划和 Linux cron） &gt; 8. 注意事项 &gt; 9. AI 工具使用声明”\nAI 提供的帮助： - 结构化的文档组织 - 清晰的步骤说明 - 代码示例和配置模板 - 跨平台的操作指南 - 专业的术语解释",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>AI 协助过程</span>"
+    ]
+  },
+  {
+    "objectID": "03-ai-assistance.html#典型的-ai-协作流程",
+    "href": "03-ai-assistance.html#典型的-ai-协作流程",
+    "title": "4  AI 协助过程",
+    "section": "4.3 典型的 AI 协作流程",
+    "text": "4.3 典型的 AI 协作流程\n\n4.3.1 问题-响应-迭代模式\n我们与 AI 的协作通常遵循以下流程：\n1. 明确任务\n   ↓\n2. 给出详细提示词\n   ↓\n3. AI 生成初步方案\n   ↓\n4. 审查结果，提出修改意见\n   ↓\n5. AI 根据反馈调整\n   ↓\n6. （如有需要，重复 4-5）\n   ↓\n7. 最终确认\n\n\n4.3.2 示例：图表优化的完整对话\n用户： &gt; “这个图的配色不太好看，帮我改得更专业一点。”\nAI： &gt; “我来帮你优化图表配色。可以考虑使用 seaborn 的配色方案，比如 ‘viridis’、‘coolwarm’ 或 ‘Set2’。另外，我会调整一下线条粗细和标记样式，让图表更清晰。” &gt; &gt; [提供修改后的代码]\n用户： &gt; “配色不错，但 y 轴标签被截断了，能不能调整一下左边距？另外图例放到图的下方吧。”\nAI： &gt; “好的，我来调整： &gt; 1. 使用 plt.subplots_adjust(left=0.15) 增加左边距 &gt; 2. 将图例位置改为 loc='upper center', bbox_to_anchor=(0.5, -0.12), ncol=2 放到图下方 &gt; &gt; [提供更新后的代码]”\n用户： &gt; “完美，就这样！”",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>AI 协助过程</span>"
+    ]
+  },
+  {
+    "objectID": "03-ai-assistance.html#ai-使用的注意事项",
+    "href": "03-ai-assistance.html#ai-使用的注意事项",
+    "title": "4  AI 协助过程",
+    "section": "4.4 AI 使用的注意事项",
+    "text": "4.4 AI 使用的注意事项\n在使用 AI 协助完成作业的过程中，我们也总结了一些经验：\n\n4.4.1 提示词要具体明确\n不太好的提示词： &gt; “帮我写个分析代码”\n好的提示词： &gt; “帮我写一个 Python 函数，输入是 SQLite 数据库连接，输出是一个 DataFrame，包含每只股票的年化收益率和波动率。使用 2020-2024 年的数据，收益率用复权收盘价计算，波动率用日收益率的标准差乘以 sqrt(252) 年化。”\n\n\n\n4.4.2 要审查和验证 AI 的输出\nAI 有时会： - 生成看上去正确但实际有逻辑错误的代码 - 使用过时的 API 或已废弃的函数 - 在计算细节上出错（如忘记年化、除权处理等）\n我们的做法： - 每段代码都仔细阅读，理解逻辑 - 小范围测试，验证结果合理性 - 交叉核对（比如用两种方法计算同一指标） - 对关键计算，手动抽查几个样本\n\n\n\n4.4.3 保持学习心态，而不是直接复制\nAI 是学习工具，不是答案机器。我们的目标是：\n\n\n\n❌ 不提倡\n✅ 提倡\n\n\n\n\n直接复制粘贴 AI 写的代码\n理解 AI 代码的思路和技巧\n\n\n只问结果，不问过程\n让 AI 解释”为什么这么写”\n\n\n完全依赖 AI 解决问题\n用 AI 辅助自己解决问题\n\n\n不懂装懂\n遇到不懂的就问 AI 解释\n\n\n\n\n\n\n4.4.4 知道 AI 的边界\nAI 很强大，但不是万能的：\n\nAI 不擅长：需要真实 API Key 的测试、特定环境配置问题、深度的业务逻辑判断\nAI 可能出错：复杂的数学计算、对最新库的了解、某些边缘情况的处理\nAI 没有上下文：它不知道你的具体作业要求、评分标准、团队约定等\n\n应对策略： - 涉及真实 API 调用时，自己测试 - 环境配置问题，多查官方文档 - 重要决策，自己结合作业要求判断",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>AI 协助过程</span>"
+    ]
+  },
+  {
+    "objectID": "03-ai-assistance.html#效率提升对比",
+    "href": "03-ai-assistance.html#效率提升对比",
+    "title": "4  AI 协助过程",
+    "section": "4.5 效率提升对比",
+    "text": "4.5 效率提升对比\n使用 AI 前后的工作量对比（估算）：\n\n\n\n任务\n不使用 AI\n使用 AI\n节省时间\n\n\n\n\n基础框架搭建\n2 小时\n30 分钟\n~75%\n\n\nAPI 对接\n3 小时\n1 小时\n~67%\n\n\nSQL 查询编写\n4 小时\n1.5 小时\n~62%\n\n\n可视化美化\n3 小时\n45 分钟\n~75%\n\n\n文档编写\n2 小时\n45 分钟\n~62%\n\n\n总计\n14 小时\n4.5 小时\n~68%\n\n\n\n更重要的是：AI 帮助我们把精力从”怎么写代码”转移到”怎么分析问题”上，提升了分析的深度和质量。",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>AI 协助过程</span>"
+    ]
+  },
+  {
+    "objectID": "03-ai-assistance.html#本章小结",
+    "href": "03-ai-assistance.html#本章小结",
+    "title": "4  AI 协助过程",
+    "section": "4.6 本章小结",
+    "text": "4.6 本章小结\nAI 工具在本项目中的价值总结：\n\n\n\n方面\n具体体现\n\n\n\n\n效率提升\n节省约 68% 的开发时间\n\n\n代码质量\n统一的风格、更好的注释、更健壮的错误处理\n\n\n学习效果\n通过 AI 的解释学到了很多实用技巧\n\n\n分析深度\n有更多精力专注于分析本身，而不是代码实现\n\n\n文档完善\nAI 帮助生成了清晰的 README 和注释\n\n\n\n核心经验：AI 是强大的助手，但最终的判断、验证和决策仍需我们自己完成。合理使用 AI，能让我们学得更快、做得更好。",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>AI 协助过程</span>"
+    ]
+  }
+]

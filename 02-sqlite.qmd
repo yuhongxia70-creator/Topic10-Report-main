@@ -1,0 +1,279 @@
+# SQLite 技术介绍
+
+## SQLite 简介
+
+SQLite 是一个轻量级的嵌入式关系型数据库管理系统，具有以下特点：
+
+- **零配置**：无需服务器，无需安装配置
+- **单文件存储**：整个数据库存储在一个文件中
+- **跨平台**：支持所有主流操作系统
+- **事务支持**：支持 ACID 特性
+- **开源免费**：完全免费，可自由使用
+
+对于金融数据分析这样的应用场景，SQLite 是一个非常理想的选择。
+
+---
+
+## 数据库表结构设计
+
+本项目设计了三个核心数据表，每个表都有明确的主键和字段设计。
+
+### macro_data（宏观数据表）
+
+```sql
+CREATE TABLE macro_data (
+    date TEXT,
+    series_id TEXT,
+    value REAL,
+    PRIMARY KEY (date, series_id)
+);
+```
+
+**设计要点**：
+- 使用**复合主键** `(date, series_id)` 确保同一指标在同一日期只有一条记录
+- `date` 存储为 TEXT 类型，格式为 'YYYY-MM-DD'
+- `series_id` 用于标识不同的宏观经济指标
+- `value` 使用 REAL 类型存储数值
+
+### stock_price（股票行情表）
+
+```sql
+CREATE TABLE stock_price (
+    code TEXT,
+    date TEXT,
+    open REAL,
+    high REAL,
+    low REAL,
+    close REAL,
+    volume REAL,
+    adj_close REAL,
+    PRIMARY KEY (code, date)
+);
+```
+
+**设计要点**：
+- 复合主键 `(code, date)` 确保每只股票每天只有一条行情记录
+- 包含完整的 OHLCV（开盘价、最高价、最低价、收盘价、成交量）数据
+- `adj_close` 字段存储复权收盘价，用于计算收益率
+
+### stock_info（股票基本信息表）
+
+```sql
+CREATE TABLE stock_info (
+    code TEXT PRIMARY KEY,
+    name TEXT,
+    industry TEXT,
+    list_date TEXT,
+    market_cap REAL
+);
+```
+
+**设计要点**：
+- `code` 作为主键，每只股票一条记录
+- 包含股票名称、行业分类、上市日期、总市值等基本信息
+- 便于按行业筛选或分析股票基本属性
+
+---
+
+## 索引优化
+
+为了提高查询效率，我们为常用查询字段创建了索引。
+
+### 创建的索引
+
+```sql
+-- 宏观数据表索引
+CREATE INDEX idx_macro_date ON macro_data(date);
+CREATE INDEX idx_macro_series ON macro_data(series_id);
+
+-- 股票行情表索引
+CREATE INDEX idx_stock_price_code ON stock_price(code);
+CREATE INDEX idx_stock_price_date ON stock_price(date);
+
+-- 股票信息表索引
+CREATE INDEX idx_stock_info_industry ON stock_info(industry);
+```
+
+### 索引的作用
+
+| 索引名称 | 适用查询场景 | 性能提升 |
+|----------|-------------|----------|
+| `idx_macro_date` | 按日期范围查询宏观数据 | 避免全表扫描 |
+| `idx_macro_series` | 按指标类型筛选 | 加快 WHERE 条件过滤 |
+| `idx_stock_price_code` | 查询单只股票的行情 | 大幅提高 GROUP BY 效率 |
+| `idx_stock_price_date` | 按日期范围查询行情 | 加速时间序列分析 |
+| `idx_stock_info_industry` | 按行业筛选股票 | 快速分类聚合 |
+
+---
+
+## SQL 查询技术
+
+本项目使用了多种 SQL 查询技术来实现复杂的数据分析。
+
+### 长表转宽表（CASE WHEN）
+
+**应用场景**：将同一日期的多个指标从行转为列
+
+```sql
+SELECT
+    date,
+    MAX(CASE WHEN series_id = 'CPIAUCSL' THEN value END) AS cpi,
+    MAX(CASE WHEN series_id = 'UNRATE' THEN value END) AS unemployment,
+    MAX(CASE WHEN series_id = 'FEDFUNDS' THEN value END) AS fed_rate
+FROM macro_data
+WHERE series_id IN ('CPIAUCSL', 'UNRATE', 'FEDFUNDS')
+GROUP BY date
+ORDER BY date;
+```
+
+**原理说明**：
+- `CASE WHEN` 为每个指标创建一个条件列
+- `MAX()` 聚合函数取出非 NULL 值
+- `GROUP BY date` 确保同一日期的数据合并为一行
+
+### 字符串函数（substr）
+
+**应用场景**：从日期字符串中提取年份
+
+```sql
+SELECT
+    code,
+    substr(date, 1, 4) AS year,
+    AVG(close) AS avg_close
+FROM stock_price
+GROUP BY code, substr(date, 1, 4);
+```
+
+**语法说明**：
+- `substr(date, 1, 4)` 从第 1 个字符开始，取 4 个字符
+- 结果即为年份（如 "2024"）
+
+### 表连接（JOIN）
+
+**应用场景**：结合股票行情和基本信息进行分析
+
+```sql
+SELECT
+    sp.date,
+    sp.code,
+    si.name,
+    si.industry,
+    sp.close
+FROM stock_price sp
+JOIN stock_info si ON sp.code = si.code
+WHERE si.industry = '银行';
+```
+
+**注意事项**：
+- 使用表别名（`sp`, `si`）简化查询
+- 通过 `ON` 子句指定连接条件
+- 可以在 WHERE 中对连接后的结果进行筛选
+
+### 聚合与分组（GROUP BY）
+
+**应用场景**：计算年度统计指标
+
+```sql
+SELECT
+    code,
+    substr(date, 1, 4) AS year,
+    COUNT(*) AS trading_days,
+    AVG(close) AS avg_close,
+    MAX(high) AS year_high,
+    MIN(low) AS year_low,
+    SUM(volume) AS total_volume
+FROM stock_price
+GROUP BY code, substr(date, 1, 4)
+ORDER BY code, year;
+```
+
+**常用聚合函数**：
+- `COUNT()` - 计数
+- `AVG()` - 平均值
+- `MAX()` - 最大值
+- `MIN()` - 最小值
+- `SUM()` - 求和
+
+---
+
+## Python 与 SQLite 交互
+
+### 数据库连接
+
+```python
+import sqlite3
+import pandas as pd
+
+# 连接数据库（不存在则创建）
+conn = sqlite3.connect('fin_data.db')
+```
+
+### 写入数据
+
+使用 Pandas 的 `to_sql()` 方法可以方便地将 DataFrame 写入数据库：
+
+```python
+# 将 DataFrame 写入数据库
+df.to_sql(
+    name='macro_data',        # 表名
+    con=conn,                  # 数据库连接
+    if_exists='replace',       # 已存在则替换
+    index=False                # 不写入索引
+)
+```
+
+### 读取查询结果
+
+使用 Pandas 的 `read_sql_query()` 执行 SQL 查询并返回 DataFrame：
+
+```python
+# 执行 SQL 查询
+query = """
+    SELECT date, series_id, value
+    FROM macro_data
+    WHERE series_id = 'CPIAUCSL'
+    ORDER BY date
+"""
+df = pd.read_sql_query(query, conn)
+```
+
+---
+
+## 增量更新机制
+
+项目实现了智能的增量更新功能，避免重复下载已有数据。
+
+### 查询最新日期
+
+```sql
+SELECT MAX(date) AS last_date FROM macro_data WHERE series_id = ?;
+```
+
+### 增量插入新数据
+
+```python
+# 获取数据库中已有数据的最新日期
+last_date = get_last_date(conn, series_id)
+
+# 只下载该日期之后的新数据
+new_data = fetch_data_from_api(start_date=last_date)
+
+# 追加到数据库
+new_data.to_sql('macro_data', conn, if_exists='append', index=False)
+```
+
+---
+
+## 本章小结
+
+本项目中使用的 SQLite 技术要点总结：
+
+| 技术类别 | 具体内容 |
+|----------|----------|
+| **表结构设计** | 复合主键、合理的数据类型选择 |
+| **性能优化** | 为常用查询字段创建索引 |
+| **查询技巧** | CASE WHEN 转置、substr 字符串处理、JOIN 表连接、GROUP BY 聚合 |
+| **Python 集成** | sqlite3 连接、Pandas 的 to_sql/read_sql_query |
+| **工程化** | 增量更新机制 |
+
+这些技术组合使得项目既高效又易于维护。下一章将介绍完成作业过程中 AI 工具的使用。

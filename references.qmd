@@ -1,0 +1,27 @@
+# 参考资料
+
+## 数据来源
+
+- **FRED API**: [https://fred.stlouisfed.org/docs/api/api_key.html](https://fred.stlouisfed.org/docs/api/api_key.html)
+- **baostock**: [http://baostock.com/](http://baostock.com/)
+
+## SQLite 文档
+
+- **SQLite 官方文档**: [https://www.sqlite.org/docs.html](https://www.sqlite.org/docs.html)
+- **Python sqlite3 模块**: [https://docs.python.org/3/library/sqlite3.html](https://docs.python.org/3/library/sqlite3.html)
+
+## Pandas 与 SQL
+
+- **Pandas to_sql**: [https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html)
+- **Pandas read_sql_query**: [https://pandas.pydata.org/docs/reference/api/pandas.read_sql_query.html](https://pandas.pydata.org/docs/reference/api/pandas.read_sql_query.html)
+
+## Quarto
+
+- **Quarto 官方网站**: [https://quarto.org/](https://quarto.org/)
+- **Quarto Book 指南**: [https://quarto.org/docs/books/](https://quarto.org/docs/books/)
+- **GitHub Pages 部署**: [https://quarto.org/docs/publishing/github-pages.html](https://quarto.org/docs/publishing/github-pages.html)
+
+## 金融分析参考
+
+- **收益率曲线与经济预测**: [https://www.frbsf.org/research/economics/letter/2018/el2018-06/](https://www.frbsf.org/research/economics/letter/2018/el2018-06/)
+- **菲利普斯曲线**: [https://www.imf.org/external/pubs/ft/fandd/2020/03/pdf/phillips-curve-blanchard.pdf](https://www.imf.org/external/pubs/ft/fandd/2020/03/pdf/phillips-curve-blanchard.pdf)

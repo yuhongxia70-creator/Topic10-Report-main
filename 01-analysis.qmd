@@ -60,19 +60,9 @@
 
 **SQL 查询方法**：使用 `CASE WHEN` 语句将长表转为宽表，然后计算利差。
 
----
-title: "代码块阴影示例"
-format: html
----
 
-<style>
-.code-shadow {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* 水平偏移 垂直偏移 模糊半径 颜色 */
-  border-radius: 8px;                     /* 可选：圆角 */
-}
-</style>
 
-```{.sql style="box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px;"}
+```sql
 SELECT
     date,
     MAX(CASE WHEN series_id = 'GS10' THEN value END) AS gs10,
